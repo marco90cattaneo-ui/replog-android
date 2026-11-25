@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "REPLOG",
+    "slug": "replog",
+    "version": "0.3.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "android": {
+      "package": "it.replog.fitness",
+      "versionCode": 3
+    },
+    "plugins": [
+      "expo-status-bar"
+    ]
+  }
+}
