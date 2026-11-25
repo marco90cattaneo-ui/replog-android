@@ -1,0 +1,35 @@
+
+name: Build REPLOG APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+    steps:
+      - name: Scarica il progetto
+        uses: actions/checkout@v4
+
+      - name: Installa Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Installa dipendenze
+        run: npm install
+
+      - name: Installa EAS CLI
+        run: npm install -g eas-cli
+
+      - name: Inizializza progetto Expo
+        run: eas init --force --non-interactive
+
+      - name: Genera APK Android
+        run: eas build --platform android --profile preview --non-interactive --no-wait
+        
